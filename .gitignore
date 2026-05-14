@@ -1,0 +1,14 @@
+# Dataset
+data/
+
+# Model weights and checkpoints
+outputs/checkpoints/
+
+# Python artifacts
+__pycache__/
+*.pyc
+*.pyo
+.DS_Store
+
+# Jupyter (in case notebooks are added later)
+.ipynb_checkpoints/
