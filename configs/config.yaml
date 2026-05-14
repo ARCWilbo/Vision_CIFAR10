@@ -1,0 +1,23 @@
+model:
+  architecture: "cnn"   # "cnn" | "resnet18"
+  dropout: 0.3
+
+data:
+  batch_size: 128
+  val_split: 0.1
+  num_workers: 4
+  augmentation: true
+
+training:
+  epochs: 50
+  optimizer: "adam"     # "adam" | "sgd"
+  learning_rate: 0.001
+  weight_decay: 0.0001
+  scheduler: "cosine"   # "cosine" | "step" | "none"
+  early_stopping_patience: 10
+  seed: 42
+
+paths:
+  data_dir: "data/"
+  checkpoint_dir: "outputs/checkpoints/"
+  figures_dir: "outputs/figures/"
