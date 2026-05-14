@@ -1,5 +1,6 @@
-# Dataset
-data/
+# Dataset (raw files and downloaded archives)
+data/cifar-10-python.tar.gz
+data/cifar-10-batches-py/
 
 # Model weights and checkpoints
 outputs/checkpoints/
