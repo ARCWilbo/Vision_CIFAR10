@@ -95,12 +95,26 @@ Key options in `configs/config.yaml`:
 
 ---
 
-## Expected Results
+## Results
 
-| Model | Val Accuracy | Notes |
-|-------|-------------|-------|
-| Custom CNN | 75–85% | ~700K params, trains in ~20 min on MPS |
-| ResNet-18 | 90%+ | ~11M params, trains in ~30 min on MPS |
+| Model | Val Accuracy | Train Accuracy | Epochs | Notes |
+|-------|-------------|----------------|--------|-------|
+| Custom CNN | **~84%** | ~83% | 50 | ~700K params · val loss ≈ 0.44 · no overfitting |
+| ResNet-18 | **~86%** | ~94% | 44 (early stop) | ~11M params · val loss ≈ 0.50 · overfitting visible |
+
+**Custom CNN — Accuracy & Loss**
+
+![CNN Accuracy](outputs/figures/cnn/accuracy_curves.png)
+![CNN Loss](outputs/figures/cnn/loss_curves.png)
+
+> Val accuracy tracks above train accuracy throughout — expected behavior when dropout is active during training but disabled at eval time.
+
+**ResNet-18 — Accuracy & Loss**
+
+![ResNet18 Accuracy](outputs/figures/resnet18/accuracy_curves.png)
+![ResNet18 Loss](outputs/figures/resnet18/loss_curves.png)
+
+> Classic overfitting signature: train loss drops to ~0.16 while val loss plateaus at ~0.50. Early stopping triggered at epoch 44. Data augmentation or stronger regularization would close this gap.
 
 ---
 
@@ -110,10 +124,10 @@ After training, the following are saved automatically:
 
 - `outputs/checkpoints/best_<arch>.pth` — best model by validation loss
 - `outputs/checkpoints/final_<arch>.pth` — model state at end of training
-- `outputs/figures/loss_curves.png`
-- `outputs/figures/accuracy_curves.png`
-- `outputs/figures/confusion_matrix.png`
-- `outputs/figures/sample_predictions.png`
+- `outputs/figures/<arch>/loss_curves.png`
+- `outputs/figures/<arch>/accuracy_curves.png`
+- `outputs/figures/<arch>/confusion_matrix.png`
+- `outputs/figures/<arch>/sample_predictions.png`
 
 ---
 
